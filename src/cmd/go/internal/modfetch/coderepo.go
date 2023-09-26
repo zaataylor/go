@@ -855,7 +855,7 @@ func (r *codeRepo) findDir(ctx context.Context, version string) (rev, dir string
 		if _, _, ok := module.SplitPathVersion(mpath1); !ok {
 			return "", "", nil, fmt.Errorf("%s has malformed module path %q%s at revision %s", file1, mpath1, suffix, rev)
 		}
-		return "", "", nil, fmt.Errorf("%s has post-%s module path %q%s at revision %s", file1, semver.Major(version), mpath1, suffix, rev)
+		return "", "", nil, fmt.Errorf("%s has post-%s module path %q%s at revision %s\n\tto get this version, run go get %s%s@%s", file1, semver.Major(version), mpath1, suffix, rev, mpath1, suffix, rev)
 	}
 
 	if r.codeDir == "" && (r.pathMajor == "" || strings.HasPrefix(r.pathMajor, ".")) {
